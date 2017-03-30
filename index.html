@@ -15,39 +15,45 @@
     <meta http-equiv="Content-Type" content="text/html,charset=utf-8"/>
     <title>全景</title>
     <script type="text/javascript">
+        var quanj1;
+        var quanjbody;
+        function closequanj () {
+            console.log("close");
+            document.body.appendChild(quanjbody);
+            $("#quanj1").slideToggle();
+        }
         $(document).ready(function () {
-
-            $("#remove").click(function () {
-
-
-                $("#div1").slideToggle();
-
-            });
-            $("#b2").click(function () {
-
-                $("#div1").slideToggle();
-
-                //  $("#div1").slideToggle("slow");
-            });
+            quanj1=document.getElementById('quanj1');
+            quanjbody=document.getElementById('quanjbody');
         });
-        function pic(num){
-            document.getElementById("Figure").style.backgroundImage="url(images/"+num+".jpg)";
-            $("#div1").slideToggle();
+        function pic(num) {
+            document.body.removeChild(quanjbody);
+            document.getElementById("Figure").style.backgroundImage = "url(images/" + num + ".jpg)";
+            $("#quanj1").slideToggle();
         }
     </script>
 </head>
 
 <body onload="init()">
-
+<div id="quanjbody">
 <div>
     <button onclick="pic(12)">图片12</button>
     <button onclick="pic(15)">图片15</button>
     <button onclick="pic(13)">图片13</button>
     <button onclick="pic(14)">图片14</button>
 </div>
-<div id="div1"style="display: none">
 
-    <div id="div2">
+    <button id="b2">
+
+        <img src="images/12.jpg" alt=""/>
+        <img src="images/12.jpg" alt=""/>
+        <img src="images/12.jpg" alt=""/>
+        <img src="images/12.jpg" alt=""/>
+    </button>
+</div>
+<div id="quanj1" style="display: none">
+
+    <div id="quanj2">
         <DIV class="TransformDemoPerspective200 TransformDemoPerspectiveOrigin8050"
              id="Figure" style="background-image: url('images/14.jpg');">Loading...
 
@@ -84,14 +90,11 @@
             <div class="TransformDemoDiv  " id="img16"
                  aria-haspopup="true"></DIV>
         </DIV>
-        <button id="remove">X</button>
+        <a id="remove" onclick='closequanj()'>X</a>
     </div>
 </div>
 
-<button id="b2">dsad</button>
-<form name="f" style="display: none">
-    <input name="x" value="x的值"/><input name="y" value="y的值"/>
-</form>
+
 
 </body>
 </html>
